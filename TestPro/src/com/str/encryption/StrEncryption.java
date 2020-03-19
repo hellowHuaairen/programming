@@ -1,10 +1,10 @@
-package com.test1;
+package com.str.encryption;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NiuKeTest01 {
+public class StrEncryption {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
