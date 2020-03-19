@@ -13,10 +13,10 @@ public class StrEncryption {
 	}
 	
 	/**
-	 * ¿ØÖÆÌ¨ÊäÈë£ºtime,me,ball×Ö·û´®£¬Í¨¹ı³ÌĞò¿ÉÉú³ÉËüµÄ¼ÓÃÜ×Ö·û´® s=time#ball# ,¶ÔÓ¦µÄÒ²¿ÉÒÔÉú³ÉË÷Òıindexs = {0,2,5},
-	 * ÄæÏò²Ù×÷£¬Í¨¹ı×Ö·û´®sºÍË÷Òıindex¿ÉÒÔ×ª»¯³öÔ­×Ö·û´®¡£¼ÆËãÊä³ö×îĞ¡µÄ×Ö·û´®³¤¶È£¿
-	 * ÀıÈç£ºÊäÈë£ºtime,me,ball,Êä³ö 10¡£
-	 * Ç°Ìá£º0<strs<=2000£¬0< strs[i] < 7
+	 * æ§åˆ¶å°è¾“å…¥ï¼štime,me,ballå­—ç¬¦ä¸²ï¼Œé€šè¿‡ç¨‹åºå¯ç”Ÿæˆå®ƒçš„åŠ å¯†å­—ç¬¦ä¸² s=time#ball# ,å¯¹åº”çš„ä¹Ÿå¯ä»¥ç”Ÿæˆç´¢å¼•indexs = {0,2,5},
+	 * é€†å‘æ“ä½œï¼Œé€šè¿‡å­—ç¬¦ä¸²så’Œç´¢å¼•indexå¯ä»¥è½¬åŒ–å‡ºåŸå­—ç¬¦ä¸²ã€‚è®¡ç®—è¾“å‡ºæœ€å°çš„å­—ç¬¦ä¸²é•¿åº¦ï¼Ÿ
+	 * ä¾‹å¦‚ï¼šè¾“å…¥ï¼štime,me,ball,è¾“å‡º 10ã€‚
+	 * å‰æï¼š0<strs<=2000ï¼Œ0< strs[i] < 7
 	 * 
 	 */
 	public static void calStrLength() {
@@ -30,14 +30,14 @@ public class StrEncryption {
 			List<Integer> indexs = new ArrayList<>();
 			indexs.add(0);
 			
-			//1.ÅĞ¶ÏºóÒ»¸ö×Ö·û´®ÊÇ·ñÍêÈ«°üº¬ÓÚÇ°Ò»¸ö×Ö·û´®
-			//2.Ö÷ÒªÌí¼Ó»ù´¡Ìõ¼ş
+			//1.åˆ¤æ–­åä¸€ä¸ªå­—ç¬¦ä¸²æ˜¯å¦å®Œå…¨åŒ…å«äºå‰ä¸€ä¸ªå­—ç¬¦ä¸²
+			//2.ä¸»è¦æ·»åŠ åŸºç¡€æ¡ä»¶
 			int index = 1;
 			restStr = strs[0] + "#";
 			while(index < strs.length) {
 				if(restStr.length() > strs[index].length()) {
 					int strIndex = restStr.indexOf(strs[index]);
-					if(strIndex < 0) {//±íÊ¾²»°üº¬¶ÔÓ¦µÄ×Ö·û´®
+					if(strIndex < 0) {//è¡¨ç¤ºä¸åŒ…å«å¯¹åº”çš„å­—ç¬¦ä¸²
 						indexs.add(restStr.length());
 						restStr = restStr + strs[index] + "#";
 					}else {
@@ -54,10 +54,6 @@ public class StrEncryption {
 		}
 		
 	}
-	
-
-	
-
-	
+		
 
 }

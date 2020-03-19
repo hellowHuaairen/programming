@@ -9,7 +9,7 @@ public class DataNodeService {
 	
 	private final static String ROOT_CATE = "0";
 	/**
-	 * ³õÊ¼»¯Êı¾İ
+	 * åˆå§‹åŒ–æ•°æ®
 	 * @return
 	 */
 	public List<Children> initChildrenList(){
@@ -49,39 +49,39 @@ public class DataNodeService {
 		return resList;
 	}
 
-	/*ÎÊÌâÒ»£º
-	ÊµÏÖÒ»¸öÊ÷¿Ø¼şµÄ¹´Ñ¡ÊÂ¼şÏìÓ¦º¯Êı£¬ÈôÒ»¸ö½ÚµãÏÂµÄÈÎÒâÒ»¸öÒ¶×Ó½Úµã¹´Ñ¡Ôò¸Ã½ÚµãÓëÆäËùÓĞµÄ¸¸½Úµã¶¼±»¹´Ñ¡£»Èô¹´Ñ¡µÄ½Úµãº¬ÓĞ×Ó½Úµã£¬Ôò×Ô¶¯¹´Ñ¡ËùÓĞ×Ó½Úµã¡£*/
-	// ¹´Ñ¡ÊÂ¼şº¯Êı
-	// dataTreeList   ÈçÉÏËùÊ¾µÄÊ÷×´Êı¾İ½á¹¹
-	// checkedName ±¾´ÎÊÂ¼ş¹´Ñ¡µÄ½ÚµãÃû³Æ
-	// isLeaf   True ±íÊ¾±¾´Î¹´Ñ¡µÄ½ÚµãÊÇÒ¶×Ó½Úµã
-	// ·µ»Ø
-	// void    Ö±½ÓĞŞ¸ÄdataTreeÖĞcheckedÊôĞÔ
+	/*é—®é¢˜ä¸€ï¼š
+	å®ç°ä¸€ä¸ªæ ‘æ§ä»¶çš„å‹¾é€‰äº‹ä»¶å“åº”å‡½æ•°ï¼Œè‹¥ä¸€ä¸ªèŠ‚ç‚¹ä¸‹çš„ä»»æ„ä¸€ä¸ªå¶å­èŠ‚ç‚¹å‹¾é€‰åˆ™è¯¥èŠ‚ç‚¹ä¸å…¶æ‰€æœ‰çš„çˆ¶èŠ‚ç‚¹éƒ½è¢«å‹¾é€‰ï¼›è‹¥å‹¾é€‰çš„èŠ‚ç‚¹å«æœ‰å­èŠ‚ç‚¹ï¼Œåˆ™è‡ªåŠ¨å‹¾é€‰æ‰€æœ‰å­èŠ‚ç‚¹ã€‚*/
+	// å‹¾é€‰äº‹ä»¶å‡½æ•°
+	// dataTreeList   å¦‚ä¸Šæ‰€ç¤ºçš„æ ‘çŠ¶æ•°æ®ç»“æ„
+	// checkedName æœ¬æ¬¡äº‹ä»¶å‹¾é€‰çš„èŠ‚ç‚¹åç§°
+	// isLeaf   True è¡¨ç¤ºæœ¬æ¬¡å‹¾é€‰çš„èŠ‚ç‚¹æ˜¯å¶å­èŠ‚ç‚¹
+	// è¿”å›
+	// void    ç›´æ¥ä¿®æ”¹dataTreeä¸­checkedå±æ€§
 
 	// For Java
 	public void onChecked(List<Children> dataTreeList, String checkedName, Boolean isLeaf) {
 		
 		if(null != dataTreeList && dataTreeList.size() > 0) {
 			
-			//1.»ñÈ¡ËùÓĞ½Úµã£¬Éú³ÉÃ¿¸ö½ÚµãµÄ¸¸×Ó¹ØÏµparentId,½«Ê÷ĞÎ²Ëµ¥×ªÎªÁĞ±í
+			//1.è·å–æ‰€æœ‰èŠ‚ç‚¹ï¼Œç”Ÿæˆæ¯ä¸ªèŠ‚ç‚¹çš„çˆ¶å­å…³ç³»parentId,å°†æ ‘å½¢èœå•è½¬ä¸ºåˆ—è¡¨
 			List<Children> allChildList = new ArrayList<>();
 			getAllNodes(dataTreeList, allChildList, ROOT_CATE);
 			
-			//2.ÔÚÁĞ±íÖĞ°´ÕÕ checkedNameºÍisLeafÊ÷ĞÎ£¬Æ¥Åä¶ÔÓ¦µÄ½Úµã
+			//2.åœ¨åˆ—è¡¨ä¸­æŒ‰ç…§ checkedNameå’ŒisLeafæ ‘å½¢ï¼ŒåŒ¹é…å¯¹åº”çš„èŠ‚ç‚¹
 			Children matchedChild = allChildList.stream()
 					.filter(c-> c.getName().equals(checkedName) && c.isLeaf() == isLeaf)
 					.collect(Collectors.toList()).get(0);
 			
-			//3.ÔÚÁĞ±íallChildListÖĞ²éÕÒ½Úµã£¨matchedChild£©µÄËùÓĞ¸¸½ÚµãÃû³Æ£¬»òÕß²éÕÒËüµÄËùÓĞ×Ó½ÚµãÃû³Æ
+			//3.åœ¨åˆ—è¡¨allChildListä¸­æŸ¥æ‰¾èŠ‚ç‚¹ï¼ˆmatchedChildï¼‰çš„æ‰€æœ‰çˆ¶èŠ‚ç‚¹åç§°ï¼Œæˆ–è€…æŸ¥æ‰¾å®ƒçš„æ‰€æœ‰å­èŠ‚ç‚¹åç§°
 			List<String> checkedNames = getCheckedNodeNames(allChildList, matchedChild);
 			
-			//4.Í¨¹ı¹´Ñ¡Ãû³ÆµÄÊı×é£¬ÉèÖÃÑ¡ÖĞ×´Ì¬
+			//4.é€šè¿‡å‹¾é€‰åç§°çš„æ•°ç»„ï¼Œè®¾ç½®é€‰ä¸­çŠ¶æ€
 			checkChildNodesByName(dataTreeList, checkedNames);
 		}
 	}
 	
 	/**
-	 *  ²éÕÒĞèÒª¹´Ñ¡µÄ½ÚµãÃû³ÆµÄÊı×é£¬ÈôÎªÒ¶×Ó½ÚµãÔòÆäËùÓĞ¸¸½Úµã¹´Ñ¡£¬ÈôÎª·ÇÒ¶×Ó½Úµã£¬Ôò¹´Ñ¡ÆäÏÂµÄËùÓĞ×Ó½Úµã
+	 *  æŸ¥æ‰¾éœ€è¦å‹¾é€‰çš„èŠ‚ç‚¹åç§°çš„æ•°ç»„ï¼Œè‹¥ä¸ºå¶å­èŠ‚ç‚¹åˆ™å…¶æ‰€æœ‰çˆ¶èŠ‚ç‚¹å‹¾é€‰ï¼Œè‹¥ä¸ºéå¶å­èŠ‚ç‚¹ï¼Œåˆ™å‹¾é€‰å…¶ä¸‹çš„æ‰€æœ‰å­èŠ‚ç‚¹
 	 * @param allChildList
 	 * @param matchedChild
 	 * @return
@@ -92,17 +92,17 @@ public class DataNodeService {
 		List<String> names = new ArrayList<>();
 		names.add(matchedChild.getName());
 		if(matchedChild.isLeaf()) {
-			//Ò¶×Ó½Úµã
+			//å¶å­èŠ‚ç‚¹
 			getParentNames(names, allChildList, matchedChild.getParentId());
 		}else {
-			//·ÇÒ¶×Ó½Úµã
+			//éå¶å­èŠ‚ç‚¹
 			getChidrenNodeNames(names, allChildList, matchedChild.getParentId());
 		}
 		return names;
 	}
 	
 	/**
-	 * ÈôÎªÒ¶×Ó½ÚµãÔòÆäËùÓĞ¸¸½Úµã¹´Ñ¡
+	 * è‹¥ä¸ºå¶å­èŠ‚ç‚¹åˆ™å…¶æ‰€æœ‰çˆ¶èŠ‚ç‚¹å‹¾é€‰
 	 * @param names
 	 */
 	void getParentNames(List<String> names, List<Children> allChildList, String parentId) {
@@ -121,7 +121,7 @@ public class DataNodeService {
 	}
 	
 	/**
-	 *  ÈôÎª·ÇÒ¶×Ó½Úµã£¬Ôò¹´Ñ¡ÆäÏÂµÄËùÓĞ×Ó½Úµã
+	 *  è‹¥ä¸ºéå¶å­èŠ‚ç‚¹ï¼Œåˆ™å‹¾é€‰å…¶ä¸‹çš„æ‰€æœ‰å­èŠ‚ç‚¹
 	 * @param names
 	 * @param allChildList
 	 * @param parentId
@@ -144,7 +144,7 @@ public class DataNodeService {
 	}
 	
 	/**
-	 * ¸ù¾İ½ÚµãÃû³ÆÊı×éÉèÖÃÑ¡ÖĞ½Úµã
+	 * æ ¹æ®èŠ‚ç‚¹åç§°æ•°ç»„è®¾ç½®é€‰ä¸­èŠ‚ç‚¹
 	 * @param childirenList
 	 */
 	void checkChildNodesByName(List<Children> childirenList,List<String> checkedNames) {
@@ -164,25 +164,25 @@ public class DataNodeService {
 		}
 	}
 	
-	/*ÎÊÌâ¶ş£º
-	ÊµÏÖÒ»¸öº¯Êı£¬Çó¸Ã×éÖ¯ÖĞÄêÁä×î´óµÄN¸öÈË¡££¨ÆäÖĞ±£Ö¤Ò¶×Ó½Úµã¶¼ÊÇÈË£©*/
+	/*é—®é¢˜äºŒï¼š
+	å®ç°ä¸€ä¸ªå‡½æ•°ï¼Œæ±‚è¯¥ç»„ç»‡ä¸­å¹´é¾„æœ€å¤§çš„Nä¸ªäººã€‚ï¼ˆå…¶ä¸­ä¿è¯å¶å­èŠ‚ç‚¹éƒ½æ˜¯äººï¼‰*/
 
-	// Çó×î´óÄêÁäº¯Êı
-	// dataTreeList   ÈçÉÏËùÊ¾µÄÊ÷×´Êı¾İ½á¹¹
-	// N    N¸öÈËµÄ¶¨Òå£¬N=[1, 100]
-	// ·µ»Ø
-	// []     ·µ»Ø×î´óN¸öÈËµÄÃû×ÖÊı¾İ£¬´Ó´óµ½Ğ¡[name1,name2,¡­]
+	// æ±‚æœ€å¤§å¹´é¾„å‡½æ•°
+	// dataTreeList   å¦‚ä¸Šæ‰€ç¤ºçš„æ ‘çŠ¶æ•°æ®ç»“æ„
+	// N    Nä¸ªäººçš„å®šä¹‰ï¼ŒN=[1, 100]
+	// è¿”å›
+	// []     è¿”å›æœ€å¤§Nä¸ªäººçš„åå­—æ•°æ®ï¼Œä»å¤§åˆ°å°[name1,name2,â€¦]
 
 	// For Java
 	public String[] getTopN(List<Children> dataTreeList, int N) {
 		
 		String [] names  = new String [N];
-		//1.»ñÈ¡ËùÓĞµÄÒ¶×Ó½Úµã
+		//1.è·å–æ‰€æœ‰çš„å¶å­èŠ‚ç‚¹
 		List<Children> leafList = new ArrayList<>();
 		getLeafNodes(dataTreeList, leafList);
-		//2.Í¨¹ı¶ÔÏóÊôĞÔage½øĞĞÅÅĞò
+		//2.é€šè¿‡å¯¹è±¡å±æ€§ageè¿›è¡Œæ’åº
 		List<Children> restChildrenList = leafList.stream().sorted(Comparator.comparing(Children::getAge).reversed()).collect(Collectors.toList());
-		//3.·µ»Ø×î´óN¸öÈËµÄÃû×Ö
+		//3.è¿”å›æœ€å¤§Nä¸ªäººçš„åå­—
 		if(restChildrenList.size() >= N) {
 			for(int i=0;i< N;i++) {
 				names[i] = restChildrenList.get(i).getName();
@@ -198,7 +198,7 @@ public class DataNodeService {
 	
 	
 	/**
-	 * »ñÈ¡Ê÷ĞÎ²Ëµ¥ËùÓĞ½Úµã
+	 * è·å–æ ‘å½¢èœå•æ‰€æœ‰èŠ‚ç‚¹
 	 * @param srcChildrenList
 	 * @param resChildrenList
 	 */
@@ -207,10 +207,10 @@ public class DataNodeService {
 			for(int i=0;i< srcChildrenList.size();i++) {
 				Children tempChild = srcChildrenList.get(i);
 				tempChild.setParentId(parentId);
-				if(tempChild.isLeaf()) { //Ò¶×Ó½ÚµãÔòÉèÖÃparentId
+				if(tempChild.isLeaf()) { //å¶å­èŠ‚ç‚¹åˆ™è®¾ç½®parentId
 					resChildrenList.add(tempChild);
 				}else {
-					//·ÇÒ¶×Ó½ÚµãÔò¼ÌĞø±éÀú
+					//éå¶å­èŠ‚ç‚¹åˆ™ç»§ç»­éå†
 					getAllNodes(tempChild.getChildren(), resChildrenList, tempChild.getName());
 				}
 			}
@@ -218,7 +218,7 @@ public class DataNodeService {
 	}
 	
 	/**
-	 * »ñÈ¡ËùÓĞÒ¶×Ó½Úµã
+	 * è·å–æ‰€æœ‰å¶å­èŠ‚ç‚¹
 	 * @param srcChildrenList
 	 * @param resChildrenList
 	 */
@@ -226,10 +226,10 @@ public class DataNodeService {
 		if(null != srcChildrenList && srcChildrenList.size() > 0) {
 			for(int i=0;i< srcChildrenList.size();i++) {
 				Children tempChild = srcChildrenList.get(i);
-				if(tempChild.isLeaf()) { //Ò¶×Ó½ÚµãÔòÌí¼Óµ½¼¯ºÏ
+				if(tempChild.isLeaf()) { //å¶å­èŠ‚ç‚¹åˆ™æ·»åŠ åˆ°é›†åˆ
 					resChildrenList.add(tempChild);
 				}else {
-					//·ÇÒ¶×Ó½ÚµãÔò¼ÌĞø±éÀú
+					//éå¶å­èŠ‚ç‚¹åˆ™ç»§ç»­éå†
 					getLeafNodes(tempChild.getChildren(), resChildrenList);
 				}
 			}

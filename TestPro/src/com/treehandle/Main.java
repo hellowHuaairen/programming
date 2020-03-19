@@ -4,9 +4,9 @@ import java.util.*;
 public class Main {
 
 	/**
-	 * ËµÃ÷£º
-	 * 1.getTopN·½·¨¿ÉÖ±½ÓÖ´ĞĞ
-	 * 2.onChecked Î´²âÊÔ£¬ÄãÓĞÊ±¼ä¿ÉÒÔ¿´ÏÂÊµÏÖµÄË¼Â·¡£
+	 * è¯´æ˜ï¼š
+	 * 1.getTopNæ–¹æ³•å¯ç›´æ¥æ‰§è¡Œ
+	 * 2.onChecked æœªæµ‹è¯•ï¼Œä½ æœ‰æ—¶é—´å¯ä»¥çœ‹ä¸‹å®ç°çš„æ€è·¯ã€‚
 	 * @param args
 	 */
 	public static void main(String[] args) {

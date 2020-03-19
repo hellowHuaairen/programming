@@ -3,18 +3,18 @@ package com.treehandle;
 import java.util.List;
 
 public class Children {
-	//Ãû³Æ
+	//åç§°
 	private String name;
-	//ÊÇ·ñÒ¶×Ó½Úµã
+	//æ˜¯å¦å¶å­èŠ‚ç‚¹
 	private boolean leaf;
-	//ÊÇ·ñÑ¡ÖĞ
+	//æ˜¯å¦é€‰ä¸­
 	private boolean checked;
-	//ÄêÁä
+	//å¹´é¾„
 	private Integer age;
 	
-	//¸¸½Úµãid,ÎÊÌâÒ»¶îÍâÌí¼ÓµÄÊ÷ĞÎ
+	//çˆ¶èŠ‚ç‚¹id,é—®é¢˜ä¸€é¢å¤–æ·»åŠ çš„æ ‘å½¢
 	private String parentId;
-	//×Ó½Úµã
+	//å­èŠ‚ç‚¹
 	private List<Children> children;
 	
 	public Children() {}
