@@ -7,8 +7,6 @@ import java.util.Scanner;
 public class StrEncryption {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		calStrLength();
 	}
 	
@@ -52,6 +50,7 @@ public class StrEncryption {
 			System.out.println(restStr.length());
 			
 		}
+		scanner.close();
 		
 	}
 		
