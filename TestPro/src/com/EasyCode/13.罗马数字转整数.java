@@ -1,8 +1,7 @@
-import java.util.ArrayList;
+package com.EasyCode;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /*
  * @lc app=leetcode.cn id=13 lang=java
@@ -30,15 +29,14 @@ class Solution {
         map2.put("XC", 90);
         map2.put("CD", 400);
         map2.put("CM", 900);
-
-        int result = 0;
-        getTotalNum(str, result, map2, map);
+        int initCnt = 0;
+        int result = getTotalNum(str, initCnt, map2, map);
 
         return result;
 
     }
 
-    public void getTotalNum(String str, int rest, Map<String, Integer> map2, Map<String, Integer> map) {
+    public int getTotalNum(String str, int rest, Map<String, Integer> map2, Map<String, Integer> map) {
         for (Map.Entry<String, Integer> entry : map2.entrySet()) {
             String key = entry.getKey();
             int index = str.indexOf(key);
@@ -47,8 +45,6 @@ class Solution {
                 str = str.substring(0, index) + str.substring(index + 2);
                 if (str.length() > 0) {
                     getTotalNum(str, rest, map2, map);
-                } else {
-                    return;
                 }
             }
         }
@@ -57,9 +53,8 @@ class Solution {
             for (int i = 0; i < chars.length; i++) {
                 rest = rest + map.get("" + chars[i]);
             }
-        } else {
-            return;
-        }
+        } 
+        return rest;
 
     }
 
